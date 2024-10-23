@@ -12,10 +12,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Server in ascolto");
         ServerSocket sS0 = new ServerSocket(3000);            //porta dove il server aspetta la richiesta
-        while(true){
+        do{
             Socket s0 = sS0.accept();                                  //nuova porta del server dopo aver accettata la connessione
             gestione g = new gestione(s0);
             g.start();
-        }
+        }while(true);
     }
 }

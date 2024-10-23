@@ -8,10 +8,17 @@ import java.net.Socket;
 
 public class gestione extends Thread{
     Socket s0;
+    
+    public gestione(Socket s0){
+        this.s0 = s0;
+    }
+    
+    @Override
     public void run() {
         System.out.println("Un client si è collegato");
 
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(s0.getInputStream()))) {
+        try{
+            BufferedReader in = new BufferedReader(new InputStreamReader(s0.getInputStream()));
             DataOutputStream out = new DataOutputStream(s0.getOutputStream());                          //dati in uscita
             String StringaIn;
             do{
@@ -25,8 +32,5 @@ public class gestione extends Thread{
             e.printStackTrace();
         }
     }
-
-    public gestione(Socket s0){
-        this.s0 = s0;
-    }
+    
 }
